@@ -49,9 +49,10 @@ jobs:
                 }
                 fs.writeFileSync('shots.yml', line + '\n');
             }
+      - name: Create auth.json file
+        run: echo "${{ secrets.AUTH_JSON }}" > auth.json
       - name: Take shots
-        run: |
-          shot-scraper multi shots.yml --auth ${{ secrets.CLOUD }}
+        run: shot-scraper multi shots.yml --auth auth.json
 
       - name: Commit and push
         run: |-
@@ -62,3 +63,5 @@ jobs:
           git commit -m "${timestamp}" || exit 0
           git pull --rebase
           git push
+      - name: Delete auth.json file
+        run: rm auth.json
