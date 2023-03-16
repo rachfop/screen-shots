@@ -50,7 +50,7 @@ jobs:
                 fs.writeFileSync('shots.yml', line + '\n');
             }
       - name: Create auth.json file
-        run: echo "${{ secrets.AUTH_JSON }}" > auth.json
+        run: echo "${{ secrets.AUTH }}" > auth.json
       - name: Take shots
         run: shot-scraper multi shots.yml --auth auth.json
 
