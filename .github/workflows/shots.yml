@@ -1,8 +1,8 @@
 name: Take screenshots
 
 on:
-  push:
-  workflow_dispatch:
+  schedule:
+  - cron: `5 8 * * 7`
 
 permissions:
   contents: write
@@ -42,7 +42,6 @@ jobs:
           json: ${{ secrets.CLOUD }}
       - name: Take shots
         run: shot-scraper multi shots.yml --auth auth.json
-
       - name: Commit and push
         run: |-
           git config user.name "Automated"
