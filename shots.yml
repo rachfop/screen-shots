@@ -8,3 +8,9 @@
     document.querySelectorAll(
       '[data-ad-rendered],#ensNotifyBanner'
     ).forEach(el => el.style.display = 'none')
+- url: https://cloud.temporal.io/namespaces/docs-assembly.a2dd6/workflows
+  output: recent-workflows.png
+  width: 1600
+  height: 1600
+  quality: 80
+  wait: 2000
